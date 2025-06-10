@@ -1,7 +1,4 @@
 import { Client } from '$lib/common/client.js'
-import DB from '$lib/common/database.js'
-import { json } from '@sveltejs/kit'
-
 
 export async function PUT({request, params}) {
 const token = request.headers.get('Authorization')??''

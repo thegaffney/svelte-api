@@ -1,4 +1,3 @@
-
 import DB from '$lib/common/database.js'
 import jws from 'jws'
 import { json } from '@sveltejs/kit'
