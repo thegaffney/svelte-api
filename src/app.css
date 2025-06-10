@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+h1 {
+    font-size: 24px;
+}
+p {
+    margin: 8px 0;
+}
+input[type="text"] {
+    background-color: white;
+    border:1px solid #b9b9bb;
+    border-radius: 4px;
+    padding:4px;
+}
+input[type="text"]:disabled {
+    background-color: #d4d4d8;
+}
+button, .button {
+    width: auto;
+    max-width: 220px;
+    background-color: #84a1b8;
+    color:white;
+    padding:6px 8px;
+    display: flex;
+    align-items: center;
+    gap:5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button svg, .button svg {
+    opacity: 0.6;
+}
