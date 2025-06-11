@@ -1,28 +1,33 @@
 import DB from "$lib/common/database";
-import type { Actions, PageServerLoad } from "./$types"
+import type { Actions } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
-    // have access to the customer_id somehow
+    // get ID of client/customer/user, from login?
     const customer_id = 1
+
     const rows = await DB().query(`select api_key from data.customers where customer_id = $1`, [customer_id])
- 
-    let apiKey = ''
-    if(rows[0]){
-        apiKey = 'YES' // DONT SEND KEY!
+
+    let api_key = ''
+    if(rows[0] && rows[0].api_key){
+        api_key = 'YES' // don't send real key
     }
-    return { 
-        apiKey
+    return {
+        api_key
     }
 }
 
 export const actions = {
-	default: async () => {
-        // have access to the customer_id somehow
+    default: async () => {
+        // get ID of client/customer/user, from login?
         const customer_id = 1
-		const apiKey = crypto.randomUUID()
-        await DB().query('update data.customers set api_key = $1 where customer_id = $2', [apiKey, customer_id])
+        const api_key = crypto.randomUUID()
+
+        await DB().query(`update data.customers set api_key = $1 where customer_id = $2`, [api_key, customer_id])
+
         return {
-            apiKey
+            api_key
         }
-	}
-} satisfies Actions;
+    }
+
+} satisfies Actions

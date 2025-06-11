@@ -15,6 +15,9 @@ input[type="text"] {
 input[type="text"]:disabled {
     background-color: #d4d4d8;
 }
+button:hover {
+    filter:brightness(80%)
+}
 button, .button {
     width: auto;
     max-width: 220px;
